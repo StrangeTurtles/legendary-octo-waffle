@@ -1,7 +1,7 @@
 ﻿using Raylib;
 using rl = Raylib.Raylib;
 
-namespace ConsoleApp1
+namespace Hierarchies
 {
     static class Program
     {
@@ -9,12 +9,16 @@ namespace ConsoleApp1
         {
             // Initialization
             //--------------------------------------------------------------------------------------
-            int screenWidth = 800;
-            int screenHeight = 450;
+            int screenWidth = 600;
+            int screenHeight = 480;
 
-            rl.InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+            
+
+            rl.InitWindow(screenWidth, screenHeight, "Tanks for Everything!");
 
             rl.SetTargetFPS(60);
+            Game game = new Game();
+            game.Init();
             //--------------------------------------------------------------------------------------
 
             // Main game loop
@@ -22,23 +26,26 @@ namespace ConsoleApp1
             {
                 // Update
                 //----------------------------------------------------------------------------------
+                game.Update();
                 // TODO: Update your variables here
                 //----------------------------------------------------------------------------------
 
                 // Draw
                 //----------------------------------------------------------------------------------
-                rl.BeginDrawing();
+                game.Draw();
+                //rl.BeginDrawing();
 
-                rl.ClearBackground(Color.RAYWHITE);
+                //rl.ClearBackground(Color.RAYWHITE);
 
-                rl.DrawText("Congrats! You created your first window!", 190, 200, 20, Color.LIGHTGRAY);
+                //rl.DrawText("Congrats! You created your first window!", 190, 200, 20, Color.LIGHTGRAY);
 
-                rl.EndDrawing();
+                //rl.EndDrawing();
                 //----------------------------------------------------------------------------------
             }
 
             // De-Initialization
             //--------------------------------------------------------------------------------------
+            game.Shutdown();
             rl.CloseWindow();        // Close window and OpenGL context
                                      //--------------------------------------------------------------------------------------
 
