@@ -10,10 +10,16 @@ namespace Hierarchies
     {
         Texture2D texture = new Texture2D();
         Image image = new Image();
+        /// <summary>
+        /// The width of the sprite
+        /// </summary>
         public float Width
         {
             get { return texture.width; }
         }
+        /// <summary>
+        /// The height of the sprite
+        /// </summary>
         public float Height
         {
             get { return texture.height; }
@@ -21,20 +27,30 @@ namespace Hierarchies
         public SpriteObject()
         {
         }
+        /// <summary>
+        /// Loads the image
+        /// </summary>
+        /// <param name="filename"></param>
         public void Load(string filename)
         {
             Image img = LoadImage(filename);
             texture = LoadTextureFromImage(img);
-        }        public override void OnDraw()
+        }
+        /// <summary>
+        /// Draws the sprite
+        /// </summary>
+        public override void OnDraw()
         {
             float rotation = (float)Math.Atan2(
-           globalTransform.m2, globalTransform.m1);
+            globalTransform.m2, globalTransform.m1);
 
             Raylib.Raylib.DrawTextureEx(
             texture,
             new Raylib.Vector2(globalTransform.m7, globalTransform.m8),
             rotation * (float)(180.0f / Math.PI),
             1, Color.WHITE);
+
+           
         }
     }
 }

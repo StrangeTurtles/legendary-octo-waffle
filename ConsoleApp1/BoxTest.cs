@@ -7,7 +7,7 @@ using static Raylib.Raylib;
 
 namespace Hierarchies
 {
-    class Game
+    class BoxTest
     {
         Stopwatch stopwatch = new Stopwatch();
         private long currentTime = 0;
@@ -17,25 +17,15 @@ namespace Hierarchies
         private int frames;
         private float deltaTime = 0.005f;
 
-        Tank tank = new Tank("tankBlue_outline.png", "barrelBlue.png");
-
-        Rectangle wallTop = new Rectangle(200, 400, 100, 100);
-        /// <summary>
-        /// The Initalised step of the game
-        /// </summary>
         public void Init()
         {
             stopwatch.Start();
             lastTime = stopwatch.ElapsedMilliseconds;
         }
-        /// <summary>
-        /// Shutdown the game
-        /// </summary>
+
         public void Shutdown()
         { }
-        /// <summary>
-        /// The Update step for the game
-        /// </summary>
+
         public void Update()
         {
             currentTime = stopwatch.ElapsedMilliseconds;
@@ -49,21 +39,17 @@ namespace Hierarchies
             }
             frames++;
 
-            tank.OnUpdate(deltaTime);
-            
             lastTime = currentTime;
         }
-        /// <summary>
-        /// Draw the things in the game
-        /// </summary>
+
         public void Draw()
         {
             BeginDrawing();
             ClearBackground(Color.WHITE);
             DrawText(fps.ToString(), 10, 10, 12, Color.RED);
-            
-            tank.Update(deltaTime);
-            tank.OnDraw();
+
+            //tank.Update(deltaTime);
+            //tank.OnDraw();
             //Raylib.Raylib.DrawRectangle((int)wallTop.x, (int)wallTop.y, (int)wallTop.width, (int)wallTop.height, Color.BLACK);
 
             EndDrawing();

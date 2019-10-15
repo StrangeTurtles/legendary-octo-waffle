@@ -9,16 +9,19 @@ namespace Hierarchies
         {
             // Initialization
             //--------------------------------------------------------------------------------------
-            int screenWidth = 600;
-            int screenHeight = 480;
-
+            int screenWidth = 1200;
+            int screenHeight = 900;
+            
             
 
-            rl.InitWindow(screenWidth, screenHeight, "Tanks for Everything!");
+            rl.InitWindow(screenWidth, screenHeight, "Tanks For Nothing!");
 
             rl.SetTargetFPS(60);
             Game game = new Game();
-            game.Init();
+
+            BoxTest boxTest = new BoxTest();
+            //game.Init();
+            boxTest.Init();
             //--------------------------------------------------------------------------------------
 
             // Main game loop
@@ -26,26 +29,23 @@ namespace Hierarchies
             {
                 // Update
                 //----------------------------------------------------------------------------------
-                game.Update();
+                //game.Update();
+                boxTest.Update();
                 // TODO: Update your variables here
                 //----------------------------------------------------------------------------------
 
                 // Draw
                 //----------------------------------------------------------------------------------
-                game.Draw();
-                //rl.BeginDrawing();
-
-                //rl.ClearBackground(Color.RAYWHITE);
-
-                //rl.DrawText("Congrats! You created your first window!", 190, 200, 20, Color.LIGHTGRAY);
-
-                //rl.EndDrawing();
+                //game.Draw();
+                boxTest.Draw();
+                
                 //----------------------------------------------------------------------------------
             }
 
             // De-Initialization
             //--------------------------------------------------------------------------------------
-            game.Shutdown();
+            //game.Shutdown();
+            boxTest.Shutdown();
             rl.CloseWindow();        // Close window and OpenGL context
                                      //--------------------------------------------------------------------------------------
 
