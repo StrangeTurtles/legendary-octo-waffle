@@ -19,7 +19,10 @@ namespace Hierarchies
 
         Tank tank = new Tank("tankBlue_outline.png", "barrelBlue.png");
 
+
+        Color myColor = Color.BLACK;
         Rectangle wallTop = new Rectangle(200, 400, 100, 100);
+        AABB wallColider = new AABB(new Vector3(200, 400, 0), new Vector3(300, 500, 0));
         /// <summary>
         /// The Initalised step of the game
         /// </summary>
@@ -50,7 +53,16 @@ namespace Hierarchies
             frames++;
 
             tank.OnUpdate(deltaTime);
-            
+
+            if (wallColider.Overlaps(tank.tankColider))
+            {
+                myColor = Color.RED;
+            }
+            if (!wallColider.Overlaps(tank.tankColider))
+            {
+                myColor = Color.BLACK;
+            }
+
             lastTime = currentTime;
         }
         /// <summary>
@@ -62,9 +74,11 @@ namespace Hierarchies
             ClearBackground(Color.WHITE);
             DrawText(fps.ToString(), 10, 10, 12, Color.RED);
             
+            Raylib.Raylib.DrawRectangle((int)wallTop.x, (int)wallTop.y, (int)wallTop.width, (int)wallTop.height, myColor);
+            
+            wallColider.Draw();
             tank.Update(deltaTime);
             tank.OnDraw();
-            //Raylib.Raylib.DrawRectangle((int)wallTop.x, (int)wallTop.y, (int)wallTop.width, (int)wallTop.height, Color.BLACK);
 
             EndDrawing();
         }

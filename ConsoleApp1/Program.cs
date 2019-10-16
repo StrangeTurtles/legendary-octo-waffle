@@ -19,9 +19,9 @@ namespace Hierarchies
             rl.SetTargetFPS(60);
             Game game = new Game();
 
-            BoxTest boxTest = new BoxTest();
-            //game.Init();
-            boxTest.Init();
+            //BoxTest boxTest = new BoxTest();
+            game.Init();
+            //boxTest.Init();
             //--------------------------------------------------------------------------------------
 
             // Main game loop
@@ -29,23 +29,23 @@ namespace Hierarchies
             {
                 // Update
                 //----------------------------------------------------------------------------------
-                //game.Update();
-                boxTest.Update();
+                game.Update();
+                //boxTest.Update();
                 // TODO: Update your variables here
                 //----------------------------------------------------------------------------------
 
                 // Draw
                 //----------------------------------------------------------------------------------
-                //game.Draw();
-                boxTest.Draw();
+                game.Draw();
+                //boxTest.Draw();
                 
                 //----------------------------------------------------------------------------------
             }
 
             // De-Initialization
             //--------------------------------------------------------------------------------------
-            //game.Shutdown();
-            boxTest.Shutdown();
+            game.Shutdown();
+            //boxTest.Shutdown();
             rl.CloseWindow();        // Close window and OpenGL context
                                      //--------------------------------------------------------------------------------------
 
