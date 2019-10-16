@@ -17,12 +17,16 @@ namespace Hierarchies
         private int frames;
         private float deltaTime = 0.005f;
 
+        public static List<SceneObject> gameObjects = new List<SceneObject>();
+        public static List<SpriteObject> gameSprites = new List<SpriteObject>();
+        public static Dictionary<string, Texture2D> texture = new Dictionary<string, Texture2D>();
+
         Tank tank = new Tank("tankBlue_outline.png", "barrelBlue.png");
 
 
         Color myColor = Color.BLACK;
         Rectangle wallTop = new Rectangle(200, 400, 100, 100);
-        AABB wallColider = new AABB(new Vector3(200, 400, 0), new Vector3(300, 500, 0));
+        AABB wallCollider = new AABB(new Vector3(200, 400, 0), new Vector3(300, 500, 0));
         /// <summary>
         /// The Initalised step of the game
         /// </summary>
@@ -53,12 +57,16 @@ namespace Hierarchies
             frames++;
 
             tank.OnUpdate(deltaTime);
+            foreach (var i in gameObjects)
+            {
+                i.OnUpdate(deltaTime);
+            }
 
-            if (wallColider.Overlaps(tank.tankColider))
+            if (wallCollider.Overlaps(tank.tankCollider))
             {
                 myColor = Color.RED;
             }
-            if (!wallColider.Overlaps(tank.tankColider))
+            if (!wallCollider.Overlaps(tank.tankCollider))
             {
                 myColor = Color.BLACK;
             }
@@ -74,10 +82,14 @@ namespace Hierarchies
             ClearBackground(Color.WHITE);
             DrawText(fps.ToString(), 10, 10, 12, Color.RED);
             
-            Raylib.Raylib.DrawRectangle((int)wallTop.x, (int)wallTop.y, (int)wallTop.width, (int)wallTop.height, myColor);
+            DrawRectangle((int)wallTop.x, (int)wallTop.y, (int)wallTop.width, (int)wallTop.height, myColor);
             
-            wallColider.Draw();
+            wallCollider.Draw();
             tank.Update(deltaTime);
+            foreach(var i in gameSprites)
+            {
+                i.Draw();
+            }
             tank.OnDraw();
 
             EndDrawing();

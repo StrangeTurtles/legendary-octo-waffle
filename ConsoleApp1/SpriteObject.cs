@@ -33,8 +33,16 @@ namespace Hierarchies
         /// <param name="filename"></param>
         public void Load(string filename)
         {
-            Image img = LoadImage(filename);
-            texture = LoadTextureFromImage(img);
+            if (Game.texture.ContainsKey(filename))
+            {
+                texture = Game.texture[filename];
+            }
+            else
+            {
+                Image img = LoadImage(filename);
+                texture = LoadTextureFromImage(img);
+                Game.texture.Add(filename, texture);
+            }
         }
         /// <summary>
         /// Draws the sprite
@@ -44,7 +52,7 @@ namespace Hierarchies
             float rotation = (float)Math.Atan2(
             globalTransform.m2, globalTransform.m1);
 
-            Raylib.Raylib.DrawTextureEx(
+            DrawTextureEx(
             texture,
             new Raylib.Vector2(globalTransform.m7, globalTransform.m8),
             rotation * (float)(180.0f / Math.PI),

@@ -1,5 +1,5 @@
 ﻿using Raylib;
-using rl = Raylib.Raylib;
+using static Raylib.Raylib;
 
 namespace Hierarchies
 {
@@ -14,9 +14,9 @@ namespace Hierarchies
             
             
 
-            rl.InitWindow(screenWidth, screenHeight, "Tanks For Nothing!");
+            InitWindow(screenWidth, screenHeight, "Tanks For Nothing!");
 
-            rl.SetTargetFPS(60);
+            SetTargetFPS(60);
             Game game = new Game();
 
             //BoxTest boxTest = new BoxTest();
@@ -25,7 +25,7 @@ namespace Hierarchies
             //--------------------------------------------------------------------------------------
 
             // Main game loop
-            while (!rl.WindowShouldClose())    // Detect window close button or ESC key
+            while (!WindowShouldClose())    // Detect window close button or ESC key
             {
                 // Update
                 //----------------------------------------------------------------------------------
@@ -46,7 +46,7 @@ namespace Hierarchies
             //--------------------------------------------------------------------------------------
             game.Shutdown();
             //boxTest.Shutdown();
-            rl.CloseWindow();        // Close window and OpenGL context
+            CloseWindow();        // Close window and OpenGL context
                                      //--------------------------------------------------------------------------------------
 
             return 0;

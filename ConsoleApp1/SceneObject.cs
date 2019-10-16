@@ -169,6 +169,7 @@ namespace Hierarchies
         {
             if(children.Remove(child) == true)
             {
+                child.localTransform.Set(globalTransform);
                 child.parent = null;
             }
         }
