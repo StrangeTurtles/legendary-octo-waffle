@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
+
 namespace Hierarchies
 {
     public class SceneObject
@@ -130,7 +131,7 @@ namespace Hierarchies
         }
         public virtual void OnDraw()
         {
-
+            
         }
         /// <summary>
         /// the update step for the object 

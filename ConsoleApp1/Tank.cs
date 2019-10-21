@@ -54,8 +54,7 @@ namespace Hierarchies
             turretSprite.SetRotate(-90 * (float)(Math.PI / 180.0f));
             turretSprite.SetPosition(0, turretSprite.Width / 2.0f);
 
-            //turretObject.SetRotate(-90 * (float)(Math.PI / 180.0f));
-            //turretObject.SetPosition(0, turretSprite.Width / 2.0f);
+            
 
 
             turretObject.AddChild(turretSprite);
@@ -139,9 +138,10 @@ namespace Hierarchies
         {
             SceneObject bulletObject = new BulletMove();
             Bullet bullet = new Bullet();
+            
             bulletObject.AddChild(bullet);
             turretObject.AddChild(bulletObject);
-            tankObject.UpdateTransform();
+            bulletObject.SetPosition(100, 0);          
             turretObject.RemoveChild(bulletObject);
         }
         private void ChangeSpeed()
