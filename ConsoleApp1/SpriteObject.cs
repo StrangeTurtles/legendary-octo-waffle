@@ -10,6 +10,7 @@ namespace Hierarchies
     {
         Texture2D texture = new Texture2D();
         Image image = new Image();
+        float scale = 1f;
         /// <summary>
         /// The width of the sprite
         /// </summary>
@@ -44,6 +45,10 @@ namespace Hierarchies
                 Game.texture.Add(filename, texture);
             }
         }
+        public void ReScale(float newScale)
+        {
+            scale = newScale;
+        }
         /// <summary>
         /// Draws the sprite
         /// </summary>
@@ -56,7 +61,7 @@ namespace Hierarchies
             texture,
             new Raylib.Vector2(globalTransform.m7, globalTransform.m8),
             rotation * (float)(180.0f / Math.PI),
-            1, Color.WHITE);
+            scale, Color.WHITE);
 
            
         }

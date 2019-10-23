@@ -128,21 +128,24 @@ namespace Hierarchies
             if(IsKeyPressed(KeyboardKey.KEY_SPACE))
             {
                 Shoot();
-
-                //Console.WriteLine($"{facing}");
             }
 
             tankObject.Update(deltaTime);
         }
         public void Shoot()
         {
-            SceneObject bulletObject = new BulletMove();
-            Bullet bullet = new Bullet();
-            
+            SceneObject bulletObject = new BulletObject();
+            BulletSprite bullet = new BulletSprite();
             bulletObject.AddChild(bullet);
             turretObject.AddChild(bulletObject);
-            bulletObject.SetPosition(100, 0);          
+            tankObject.UpdateTransform();
             turretObject.RemoveChild(bulletObject);
+            bullet.SetPosition(-6, -6);
+
+            Vector3 facing = new Vector3(
+               bulletObject.LocalTransform.m1,
+               bulletObject.LocalTransform.m2, 1) * 75;
+            bulletObject.Translate(facing.x, facing.y);
         }
         private void ChangeSpeed()
         {

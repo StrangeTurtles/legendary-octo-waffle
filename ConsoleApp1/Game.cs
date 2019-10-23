@@ -17,16 +17,16 @@ namespace Hierarchies
         private int frames;
         private float deltaTime = 0.005f;
 
-        public static List<SceneObject> gameObjects = new List<SceneObject>();
-        public static List<SpriteObject> gameSprites = new List<SpriteObject>();
+        public static List<BulletObject> gameObjects = new List<BulletObject>();
+        public static List<BulletSprite> gameSprites = new List<BulletSprite>();
         public static Dictionary<string, Texture2D> texture = new Dictionary<string, Texture2D>();
 
         Tank tank = new Tank("tankBlue_outline.png", "barrelBlue.png");
 
 
-        Color myColor = Color.BLACK;
+        public Color myColor = Color.BLACK;
         Rectangle wallTop = new Rectangle(200, 400, 100, 100);
-        AABB wallCollider = new AABB(new Vector3(200, 400, 0), new Vector3(300, 500, 0));
+        public AABB wallCollider = new AABB(new Vector3(200, 400, 0), new Vector3(300, 500, 0));
         /// <summary>
         /// The Initalised step of the game
         /// </summary>
@@ -61,15 +61,25 @@ namespace Hierarchies
             {
                 i.OnUpdate(deltaTime);
             }
+            foreach (var i in gameSprites)
+            {
+                i.OnUpdate(deltaTime);
+            }
+            foreach (var i in gameSprites)
+            {
+                if (i.bulletCollider.Overlaps(wallCollider) || wallCollider.Overlaps(tank.tankCollider))
+                {
+                    myColor = Color.RED;
+                    break;
+                }
+                else
+                {
+                    myColor = Color.BLACK;
+                }
+            }
 
-            if (wallCollider.Overlaps(tank.tankCollider))
-            {
-                myColor = Color.RED;
-            }
-            if (!wallCollider.Overlaps(tank.tankCollider))
-            {
-                myColor = Color.BLACK;
-            }
+
+            
 
             lastTime = currentTime;
         }
@@ -89,7 +99,9 @@ namespace Hierarchies
             foreach(var i in gameSprites)
             {
                 i.Draw();
+                i.bulletCollider.Draw();
             }
+            
             tank.OnDraw();
 
             EndDrawing();
