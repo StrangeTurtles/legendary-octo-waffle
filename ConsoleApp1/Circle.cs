@@ -6,6 +6,9 @@ using static Raylib.Raylib;
 
 namespace Hierarchies
 {
+    /// <summary>
+    /// a circle Collider
+    /// </summary>
     class Circle
     {
         Vector3 center = new Vector3();
@@ -27,23 +30,41 @@ namespace Hierarchies
             center = p;
             radius = r;
         }
-
+        /// <summary>
+        /// Checks if a point overlaps with a circle
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         public bool Overlaps(Vector3 p)
         {
             Vector3 toPoint = p - center;
             return toPoint.MagnitudeSqr() <= (radius * radius);
         }
+        /// <summary>
+        /// Checks if a circle overlaps with another circle
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool Overlaps(Circle other)
         {
             Vector3 diff = other.center - center;
             float r = radius + other.radius;
             return diff.MagnitudeSqr() <= (r * r);
         }
+        /// <summary>
+        /// Checks if an AABB overlaps with a circle
+        /// </summary>
+        /// <param name="aabb"></param>
+        /// <returns></returns>
         public bool Overlaps(AABB aabb)
         {
             Vector3 diff = aabb.ClosestPoint(center) - center;
             return diff.Dot(diff) <= (radius * radius);
         }
+        /// <summary>
+        /// using an array of points it changes the circle to fit them
+        /// </summary>
+        /// <param name="points"></param>
         public void Fit(Vector3[] points)
         {
             Vector3 min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
@@ -56,6 +77,10 @@ namespace Hierarchies
             center = (min + max) * 0.5f;
             radius = center.Distance(max);
         }
+        /// <summary>
+        /// using a list of points it changes the box to fit them
+        /// </summary>
+        /// <param name="points"></param>
         public void Fit(List<Vector3> points)
         {
             Vector3 min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
@@ -68,6 +93,9 @@ namespace Hierarchies
             center = (min + max) * 0.5f;
             radius = center.Distance(max);
         }
+        /// <summary>
+        /// Draws the circle
+        /// </summary>
         public void Draw()
         {
             DrawCircleLines((int)center.x, (int)center.y, radius, Color.RED);

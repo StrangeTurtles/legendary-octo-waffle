@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Hierarchies
 {
+    /// <summary>
+    /// This is the object in the scene
+    /// </summary>
     public class SceneObject
     {
         protected SceneObject parent = null;

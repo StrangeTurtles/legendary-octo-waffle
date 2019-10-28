@@ -6,6 +6,9 @@ using Raylib;
 
 namespace Hierarchies
 {
+    /// <summary>
+    /// The Bullet Sprite
+    /// </summary>
     class BulletSprite : SpriteObject
     {
         public Circle bulletCollider = new Circle(new Vector3(), 5);
@@ -23,16 +26,17 @@ namespace Hierarchies
             SetRotate(90 * (float)(Math.PI / 180.0f));
             ReScale(.5f);
 
-            //
+            //Adds blank vectors in to the list
             bulletPointList.Add(new Vector3());
             bulletPointList.Add(new Vector3());
             bulletPointList.Add(new Vector3());
             bulletPointList.Add(new Vector3());
-            //
+            //Sets the position of the points
             point0.SetPosition(Width / 4.0f , Height / 4.0f + 10);
             point1.SetPosition(-Width / 4.0f + 10, Height / 4.0f + 10);
             point2.SetPosition(Width / 4.0f , -Height / 4.0f + 10);
             point3.SetPosition(-Width / 4.0f + 10, -Height / 4.0f + 10);
+            //Makes them a child of the bullet sprite
             AddChild(point0);
             AddChild(point1);
             AddChild(point2);
@@ -69,6 +73,9 @@ namespace Hierarchies
         }
 
     }
+    /// <summary>
+    /// A Scene object for the bullet
+    /// </summary>
     class BulletObject : SceneObject
     {
         /// <summary>
@@ -87,7 +94,7 @@ namespace Hierarchies
             
             Vector3 facing = new Vector3(
                LocalTransform.m1,
-               LocalTransform.m2, 1) * (deltaTime * 100);
+               LocalTransform.m2, 1) * (deltaTime * 200);
             UpdateTransform();
             Translate(facing.x, facing.y); 
         }

@@ -7,6 +7,9 @@ using static Raylib.Raylib;
 
 namespace Hierarchies
 {
+    /// <summary>
+    /// This is the game
+    /// </summary>
     class Game
     {
         Stopwatch stopwatch = new Stopwatch();

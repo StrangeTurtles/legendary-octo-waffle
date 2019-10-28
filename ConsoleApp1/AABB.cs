@@ -6,6 +6,9 @@ using static Raylib.Raylib;
 
 namespace Hierarchies
 {
+    /// <summary>
+    /// an Axis Aligned Bounding Box Collider
+    /// </summary>
     class AABB
     {
         Vector3 min = new Vector3(float.NegativeInfinity,

@@ -6,6 +6,9 @@ using static Raylib.Raylib;
 
 namespace Hierarchies
 {
+    /// <summary>
+    /// The Sprite for the object
+    /// </summary>
     public class SpriteObject : SceneObject
     {
         Texture2D texture = new Texture2D();

@@ -6,7 +6,9 @@ using static Raylib.Raylib;
 
 namespace Hierarchies
 {
-    
+    /// <summary>
+    /// Makes A tank
+    /// </summary>
     class Tank : SpriteObject
     {
         SceneObject tankObject = new SceneObject();
