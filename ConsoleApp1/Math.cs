@@ -505,6 +505,10 @@ namespace Hierarchies
                 0, (float)Math.Cos(radians), (float)Math.Sin(radians),
                 0, (float)-Math.Sin(radians), (float)Math.Cos(radians));
         }
+        /// <summary>
+        /// Rotates around the X axis
+        /// </summary>
+        /// <param name="radians"></param>
         public void RotateX(double radians)
         {
             Matrix3 m = new Matrix3();
@@ -521,6 +525,10 @@ namespace Hierarchies
                 0, 1, 0,
                 (float)Math.Sin(radians), 0, (float)Math.Cos(radians));
         }
+        /// <summary>
+        /// Rotates around the Y axis
+        /// </summary>
+        /// <param name="radians"></param>
         public void RotateY(double radians)
         {
             Matrix3 m = new Matrix3();
@@ -537,6 +545,10 @@ namespace Hierarchies
                 (float)-Math.Sin(radians), (float)Math.Cos(radians), 0,
                 0, 0, 1);
         }
+        /// <summary>
+        /// Rotates around the Z axis
+        /// </summary>
+        /// <param name="radians"></param>
         public void RotateZ(double radians)
         {
             Matrix3 m = new Matrix3();

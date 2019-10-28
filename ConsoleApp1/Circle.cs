@@ -10,11 +10,18 @@ namespace Hierarchies
     {
         Vector3 center = new Vector3();
         float radius = 0f;
-
+        /// <summary>
+        /// Makes a circle Collider
+        /// </summary>
         public Circle()
         {
 
         }
+        /// <summary>
+        /// Makes a circle Collider
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="r"></param>
         public Circle(Vector3 p, float r)
         {
             center = p;

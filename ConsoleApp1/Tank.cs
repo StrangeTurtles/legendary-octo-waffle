@@ -31,6 +31,9 @@ namespace Hierarchies
             tankObject.AddChild(tankSprite);
             tankObject.AddChild(turretObject);
         }
+        /// <summary>
+        /// Draw the the tank
+        /// </summary>
         public virtual void OnDraw()
         {
             tankObject.Draw();
@@ -41,6 +44,11 @@ namespace Hierarchies
             DrawCircle((int)point2.GlobalTransform.m7, (int)point2.GlobalTransform.m8, (int)2, Color.GREEN);
             DrawCircle((int)point3.GlobalTransform.m7, (int)point3.GlobalTransform.m8, (int)2, Color.GREEN);
         }
+        /// <summary>
+        /// Makes a tank
+        /// </summary>
+        /// <param name="tankImage"></param>
+        /// <param name="turretImage"></param>
         public Tank(string tankImage, string turretImage)
         {
             corners.Add(new Vector3());
@@ -84,6 +92,10 @@ namespace Hierarchies
 
             tankObject.UpdateTransform();
         }
+        /// <summary>
+        /// The tanks Update
+        /// </summary>
+        /// <param name="deltaTime"></param>
         public virtual void OnUpdate(float deltaTime)
         {
             
@@ -132,6 +144,9 @@ namespace Hierarchies
 
             tankObject.Update(deltaTime);
         }
+        /// <summary>
+        /// Shoots a bullet
+        /// </summary>
         public void Shoot()
         {
             SceneObject bulletObject = new BulletObject();
@@ -147,6 +162,9 @@ namespace Hierarchies
                bulletObject.LocalTransform.m2, 1) * 75;
             bulletObject.Translate(facing.x, facing.y);
         }
+        /// <summary>
+        /// Changes the speed of the tank
+        /// </summary>
         private void ChangeSpeed()
         {
             if (IsKeyDown(KeyboardKey.KEY_ONE))

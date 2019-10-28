@@ -14,7 +14,9 @@ namespace Hierarchies
         SceneObject point1 = new SceneObject();
         SceneObject point2 = new SceneObject();
         SceneObject point3 = new SceneObject();
-        //Vector3 bulletPoint4 = new Vector3();
+        /// <summary>
+        /// Creates the Bullet's sprite
+        /// </summary>
         public BulletSprite()
         {
             Load("bulletBlueSilver_outline.png");
@@ -27,10 +29,10 @@ namespace Hierarchies
             bulletPointList.Add(new Vector3());
             bulletPointList.Add(new Vector3());
             //
-            point0.SetPosition(Width / 4.0f, Height / 4.0f);
-            point1.SetPosition(-Width / 4.0f, Height / 4.0f);
-            point2.SetPosition(Width / 4.0f, -Height / 4.0f);
-            point3.SetPosition(-Width / 4.0f, -Height / 4.0f);
+            point0.SetPosition(Width / 4.0f , Height / 4.0f + 10);
+            point1.SetPosition(-Width / 4.0f + 10, Height / 4.0f + 10);
+            point2.SetPosition(Width / 4.0f , -Height / 4.0f + 10);
+            point3.SetPosition(-Width / 4.0f + 10, -Height / 4.0f + 10);
             AddChild(point0);
             AddChild(point1);
             AddChild(point2);
@@ -40,6 +42,10 @@ namespace Hierarchies
 
             Game.gameSprites.Add(this);
         }
+        /// <summary>
+        /// The BulletSprite's Update
+        /// </summary>
+        /// <param name="deltaTime"></param>
         public override void OnUpdate(float deltaTime)
         {
             bulletPointList[0] = new Vector3(point0.GlobalTransform.m7, point0.GlobalTransform.m8, 0f);
@@ -50,23 +56,32 @@ namespace Hierarchies
 
             bulletCollider.Fit(bulletPointList);
         }
+        /// <summary>
+        /// Draw the Bullet's points
+        /// </summary>
         public override void OnDraw()
         {
-            DrawCircleLines((int)point0.GlobalTransform.m7, (int)point0.GlobalTransform.m8, 2, Color.GREEN);
-            DrawCircleLines((int)point1.GlobalTransform.m7, (int)point1.GlobalTransform.m8, 2, Color.GREEN);
-            DrawCircleLines((int)point2.GlobalTransform.m7, (int)point2.GlobalTransform.m8, 2, Color.GREEN);
-            DrawCircleLines((int)point3.GlobalTransform.m7, (int)point3.GlobalTransform.m8, 2, Color.GREEN);
+            DrawCircle((int)point0.GlobalTransform.m7, (int)point0.GlobalTransform.m8, 2, Color.GREEN);
+            DrawCircle((int)point1.GlobalTransform.m7, (int)point1.GlobalTransform.m8, 2, Color.GREEN);
+            DrawCircle((int)point2.GlobalTransform.m7, (int)point2.GlobalTransform.m8, 2, Color.GREEN);
+            DrawCircle((int)point3.GlobalTransform.m7, (int)point3.GlobalTransform.m8, 2, Color.GREEN);
             base.OnDraw();
         }
 
     }
     class BulletObject : SceneObject
     {
-        
+        /// <summary>
+        /// Creates the BulletObject
+        /// </summary>
         public BulletObject()
         {
             Game.gameObjects.Add(this);
         }
+        /// <summary>
+        /// The Bullet's Update
+        /// </summary>
+        /// <param name="deltaTime"></param>
         public override void OnUpdate(float deltaTime)
         {
             

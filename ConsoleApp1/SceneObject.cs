@@ -145,6 +145,9 @@ namespace Hierarchies
                 child.Update(deltaTime);
             }
         }
+        /// <summary>
+        /// Draws the object and it's children
+        /// </summary>
         public void Draw()
         {
             OnDraw();
@@ -153,19 +156,28 @@ namespace Hierarchies
                 child.Draw();
             }
         }
-
+        /// <summary>
+        /// Counts the Children
+        /// </summary>
+        /// <returns></returns>
         public int GetChildCount()
         {
             return children.Count;
         }
-
+        /// <summary>
+        /// Adds a Child to the object
+        /// </summary>
+        /// <param name="child"></param>
         public void AddChild(SceneObject child)
         {
             Debug.Assert(child.parent == null);
             child.parent = this;
             children.Add(child);
         }
-
+        /// <summary>
+        /// Removes a Child to the object
+        /// </summary>
+        /// <param name="child"></param>
         public void RemoveChild(SceneObject child)
         {
             if(children.Remove(child) == true)
@@ -174,6 +186,11 @@ namespace Hierarchies
                 child.parent = null;
             }
         }
+        /// <summary>
+        /// returns the child
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public SceneObject GetChild(int index)
         {
             return children[index];
