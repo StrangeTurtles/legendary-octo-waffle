@@ -6,7 +6,7 @@ using static Raylib.Raylib;
 
 namespace Hierarchies
 {
-    class Animal
+    class Animal : SpriteObject
     {
         public Vector3 Position = new Vector3();
         public int speed = 1; //How "fast" it can go
@@ -40,21 +40,25 @@ namespace Hierarchies
 
 
             //Screen Wrap
-            if (Position.x > screenWidth)
+            if (globalTransform.m7 > screenWidth)
             {
-                Position.x = -30;
+                //globalTransform.m7 = -30;
+                globalTransform.SetTranslation(-30, GlobalTransform.m8);
             }
-            if (Position.x < -30)
+            if (globalTransform.m7 < -30)
             {
-                Position.x = screenWidth;
+                //globalTransform.m7 = screenWidth;
+                globalTransform.SetTranslation(screenWidth, GlobalTransform.m8);
             }
-            if (Position.y > screenHeight)
+            if (globalTransform.m8 > screenHeight)
             {
-                Position.y = -30;
+                //globalTransform.m8 = -30;
+                globalTransform.SetTranslation(GlobalTransform.m7, -30);
             }
-            if (Position.y < -30)
+            if (globalTransform.m8 < -30)
             {
-                Position.y = screenHeight;
+                //globalTransform.m8 = screenHeight;
+                globalTransform.SetTranslation(GlobalTransform.m7, screenHeight);
             }
 
             //if the time is not up
@@ -65,22 +69,26 @@ namespace Hierarchies
                 if (tempY == 2)
                 {
                     //up
-                    Position.y -= speed;
+                    //globalTransform.m8 -= speed;
+                    Translate(0, -speed);
                 }
                 if (tempY == 1)
                 {
                     //down
-                    Position.y += speed;
+                    //globalTransform.m8 += speed;
+                    Translate(0, speed);
                 }
                 if (tempX == 2)
                 {
                     //left
-                    Position.x -= speed;
+                    //globalTransform.m7 -= speed;
+                    Translate(-speed, 0);
                 }
                 if (tempX == 1)
                 {
                     //right
-                    Position.x += speed;
+                    //globalTransform.m7 += speed;
+                    Translate(speed, 0);
                 }
 
             }

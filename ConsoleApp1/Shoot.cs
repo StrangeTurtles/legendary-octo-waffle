@@ -44,6 +44,11 @@ namespace Hierarchies
 
             Game.bulletSprites.Add(this);
         }
+
+        public void Die()
+        {
+            Game.bulletSprites.Remove(this);
+        }
         /// <summary>
         /// The BulletSprite's Update
         /// </summary>
@@ -82,6 +87,11 @@ namespace Hierarchies
         public BulletObject()
         {
             Game.bulletObjects.Add(this);
+        }
+
+        public void Die()
+        {
+            Game.bulletObjects.Remove(this);
         }
         /// <summary>
         /// The Bullet's Update

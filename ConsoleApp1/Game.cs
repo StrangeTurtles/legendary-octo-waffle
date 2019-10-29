@@ -27,7 +27,8 @@ namespace Hierarchies
         public static Dictionary<string, Texture2D> texture = new Dictionary<string, Texture2D>();
 
         Tank tank = new Tank("tankBlue_outline.png", "barrelBlue.png");
-
+        
+        
 
         public Color myColor = Color.BLACK;
         Rectangle wallTop = new Rectangle(200, 400, 100, 100);
@@ -39,6 +40,14 @@ namespace Hierarchies
         {
             stopwatch.Start();
             lastTime = stopwatch.ElapsedMilliseconds;
+            new Bear();
+            new Bear();
+            new Bear();
+            new Bear();
+            new Bear();
+            new Bear();
+            new Bear();
+            new Bear();
         }
         /// <summary>
         /// Shutdown the game
@@ -83,8 +92,27 @@ namespace Hierarchies
                 }
             }
 
-
-            
+            for(int x = 0; x < bears.Count; x++)
+            {
+                bears[x].RunUpdate();
+                bears[x].Update(deltaTime);
+            }
+            foreach(var i in bears)
+            {
+                foreach(var j in bulletSprites)
+                {
+                    if (j.bulletCollider.Overlaps(i.bearCollider))
+                    {
+                        i.Hit();
+                        j.Die();
+                        break;
+                    }
+                    else
+                    {
+                        
+                    }
+                }
+            }
 
             lastTime = currentTime;
         }
@@ -105,6 +133,11 @@ namespace Hierarchies
             {
                 i.Draw();
                 i.bulletCollider.Draw();
+            }
+            foreach(var i in bears)
+            {
+                i.Draw();
+                i.bearCollider.Draw();
             }
             
             tank.OnDraw();

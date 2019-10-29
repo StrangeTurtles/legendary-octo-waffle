@@ -127,8 +127,8 @@ namespace Hierarchies
                 so.parent = null;
             }
         }
-
-        public virtual void OnUpdate(float delatTime)
+        
+        public virtual void OnUpdate(float deltaTime)
         {
 
         }
