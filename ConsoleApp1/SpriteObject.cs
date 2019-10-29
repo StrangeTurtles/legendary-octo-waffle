@@ -12,7 +12,6 @@ namespace Hierarchies
     public class SpriteObject : SceneObject
     {
         Texture2D texture = new Texture2D();
-        Image image = new Image();
         float scale = 1f;
         /// <summary>
         /// The width of the sprite
@@ -65,8 +64,6 @@ namespace Hierarchies
             new Raylib.Vector2(globalTransform.m7, globalTransform.m8),
             rotation * (float)(180.0f / Math.PI),
             scale, Color.WHITE);
-
-           
         }
     }
 }

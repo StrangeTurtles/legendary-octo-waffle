@@ -36,15 +36,16 @@ namespace Hierarchies
         /// <summary>
         /// Draw the the tank
         /// </summary>
-        public virtual void OnDraw()
+        public override void OnDraw()
         {
             tankObject.Draw();
             tankCollider.Draw();
 
-            DrawCircle((int)point0.GlobalTransform.m7, (int)point0.GlobalTransform.m8, (int)2, Color.GREEN);
-            DrawCircle((int)point1.GlobalTransform.m7, (int)point1.GlobalTransform.m8, (int)2, Color.GREEN);
-            DrawCircle((int)point2.GlobalTransform.m7, (int)point2.GlobalTransform.m8, (int)2, Color.GREEN);
-            DrawCircle((int)point3.GlobalTransform.m7, (int)point3.GlobalTransform.m8, (int)2, Color.GREEN);
+            DrawCircle((int)point0.GlobalTransform.m7, (int)point0.GlobalTransform.m8, 2, Color.GREEN);
+            DrawCircle((int)point1.GlobalTransform.m7, (int)point1.GlobalTransform.m8, 2, Color.GREEN);
+            DrawCircle((int)point2.GlobalTransform.m7, (int)point2.GlobalTransform.m8, 2, Color.GREEN);
+            DrawCircle((int)point3.GlobalTransform.m7, (int)point3.GlobalTransform.m8, 2, Color.GREEN);
+            base.OnDraw();
         }
         /// <summary>
         /// Makes a tank
@@ -98,7 +99,7 @@ namespace Hierarchies
         /// The tanks Update
         /// </summary>
         /// <param name="deltaTime"></param>
-        public virtual void OnUpdate(float deltaTime)
+        public new void OnUpdate(float deltaTime)
         {
             
             corners[0] = new Vector3(point0.GlobalTransform.m7, point0.GlobalTransform.m8, 0f);
@@ -131,11 +132,11 @@ namespace Hierarchies
                tankObject.LocalTransform.m2, 1) * (deltaTime * speed) * -100;
                 tankObject.Translate(facing.x, facing.y);
             }
-            if (IsKeyDown(KeyboardKey.KEY_Q))
+            if (IsKeyDown(KeyboardKey.KEY_LEFT))
             {
                 turretObject.Rotate(-deltaTime * speed);
             }
-            if (IsKeyDown(KeyboardKey.KEY_E))
+            if (IsKeyDown(KeyboardKey.KEY_RIGHT))
             {
                 turretObject.Rotate(deltaTime * speed);
             }

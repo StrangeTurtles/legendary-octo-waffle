@@ -20,8 +20,10 @@ namespace Hierarchies
         private int frames;
         private float deltaTime = 0.005f;
 
-        public static List<BulletObject> gameObjects = new List<BulletObject>();
-        public static List<BulletSprite> gameSprites = new List<BulletSprite>();
+        public static List<BulletObject> bulletObjects = new List<BulletObject>();
+        public static List<BulletSprite> bulletSprites = new List<BulletSprite>();
+        public static List<SceneObject> gameObjects = new List<SceneObject>();
+        public static List<Bear> bears = new List<Bear>();
         public static Dictionary<string, Texture2D> texture = new Dictionary<string, Texture2D>();
 
         Tank tank = new Tank("tankBlue_outline.png", "barrelBlue.png");
@@ -60,15 +62,15 @@ namespace Hierarchies
             frames++;
 
             tank.OnUpdate(deltaTime);
-            foreach (var i in gameObjects)
+            foreach (var i in bulletObjects)
             {
                 i.OnUpdate(deltaTime);
             }
-            foreach (var i in gameSprites)
+            foreach (var i in bulletSprites)
             {
                 i.OnUpdate(deltaTime);
             }
-            foreach (var i in gameSprites)
+            foreach (var i in bulletSprites)
             {
                 if (i.bulletCollider.Overlaps(wallCollider) || wallCollider.Overlaps(tank.tankCollider))
                 {
@@ -99,7 +101,7 @@ namespace Hierarchies
             
             wallCollider.Draw();
             tank.Update(deltaTime);
-            foreach(var i in gameSprites)
+            foreach(var i in bulletSprites)
             {
                 i.Draw();
                 i.bulletCollider.Draw();

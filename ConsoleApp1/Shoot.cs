@@ -42,9 +42,7 @@ namespace Hierarchies
             AddChild(point2);
             AddChild(point3);
 
-
-
-            Game.gameSprites.Add(this);
+            Game.bulletSprites.Add(this);
         }
         /// <summary>
         /// The BulletSprite's Update
@@ -83,7 +81,7 @@ namespace Hierarchies
         /// </summary>
         public BulletObject()
         {
-            Game.gameObjects.Add(this);
+            Game.bulletObjects.Add(this);
         }
         /// <summary>
         /// The Bullet's Update
